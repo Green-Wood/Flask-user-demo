@@ -1,5 +1,5 @@
 from flask_restplus import Resource, Namespace, reqparse, fields
-from models.user_model import UserModel
+from backend.models.user_model import UserModel
 from flask_jwt_extended import (
     create_access_token,
     create_refresh_token

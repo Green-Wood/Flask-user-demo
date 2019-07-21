@@ -1,13 +1,13 @@
 from flask import Flask
 from flask_restplus import Api
 from flask_jwt_extended import JWTManager
-from db import db
+from backend.db import db
 
-from resources.user_resource import api as ns_user
-from resources.security import api as ns_security
+from backend.resources.user_resource import api as ns_user
+from backend.resources.security import api as ns_security
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://localhost:5432/flask-user-demo'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:5432/flask-user-demo'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 app.config['RESTPLUS_MASK_SWAGGER'] = False
 app.secret_key = 'greenwood'
