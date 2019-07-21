@@ -1,0 +1,5 @@
+flask
+flask-restplus
+flask-jwt-extended
+flask-sqlalchemy
+psycopg2
