@@ -7,7 +7,7 @@ branches:
 services:
   - docker
 
-before_script:
+before_install:
   - docker-compose up --build -d
 
 script:
