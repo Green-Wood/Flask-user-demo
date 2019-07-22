@@ -7,11 +7,19 @@ services:
     build:
       dockerfile: Dockerfile
       context: ./backend
+    environment:
+      - APP_ENV=prod
+      - PGUSER=postgres
+      - PGHOST=postgres
+      - PGDATABASE=postgres
+      - PGPORT=5432
+      - PGPASSWORD=postgres_password
+
 
   nginx:
     restart: always
     build:
-      dockerfile: Dockerfile.dev
+      dockerfile: Dockerfile
       context: ./nginx
     ports:
-      - "80:80"
+      - "5000:80"

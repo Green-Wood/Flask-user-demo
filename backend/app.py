@@ -1,18 +1,19 @@
 from flask import Flask
 from flask_restplus import Api
 from flask_jwt_extended import JWTManager
-from backend.db import db
+from db import db
+from config import config
+from os import getenv
 
-from backend.resources.user_resource import api as ns_user
-from backend.resources.security import api as ns_security
+from resources.user_resource import api as ns_user
+from resources.security import api as ns_security
 
+# choose a env {'dev', 'test', 'prod'}
+APP_ENV = getenv('APP_ENV', 'dev')
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:5432/flask-user-demo'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
-app.config['RESTPLUS_MASK_SWAGGER'] = False
-app.secret_key = 'greenwood'
+app.config.from_object(config[APP_ENV])
 
-api = Api(app, version='1.0', title='User Demo Api')
+api = Api(app, version='1.0', title='User Demo Api', prefix='/api')
 db.init_app(app)
 jwt = JWTManager(app)
 

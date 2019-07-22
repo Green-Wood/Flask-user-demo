@@ -1,6 +1,6 @@
 from flask_restplus import Resource, Namespace, fields
-from backend.models.user_model import UserModel
-from backend.resources.security import message_model
+from models.user_model import UserModel
+from resources.security import message_model
 
 
 api = Namespace('user', description='User Operations')
