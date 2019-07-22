@@ -13,7 +13,7 @@ before_install:
   - sudo mv docker-compose /usr/local/bin
 
 before_script:
-  - docker-compose -f docker-compose.yml up --build -d
+  - docker-compose up --build -d
 
 script:
   - docker-compose -f docker-compose.yml run api python -m unittest
