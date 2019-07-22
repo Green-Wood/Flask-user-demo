@@ -13,14 +13,11 @@ before_install:
 script:
   - docker-compose run api python -m unittest
 
-after_script:
-  - docker-compose -f docker-compose.yml down
-
 after_success:
-  - docker build -t greenw00d/flask-demo-nginx ./nginx
-  - docker build -t greenw00d/flask-demo-backend ./backend
   # login to docker cli
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # push images to docker hub
-  - docker push greenw00d/flask-demo-nginx
-  - docker push greenw00d/flask-demo-backend
+  - docker-compose push
+
+after_script:
+  - docker-compose -f docker-compose.yml down
