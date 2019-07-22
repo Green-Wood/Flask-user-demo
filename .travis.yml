@@ -1,4 +1,10 @@
+language: python
+
 sudo: required
+
+branches:
+  only:
+  - master
 
 services:
   - docker
@@ -13,7 +19,7 @@ before_install:
   - sudo mv docker-compose /usr/local/bin
 
 before_script:
-  - docker-compose up --build -d --force-recreate
+  - docker-compose up --build -d --exit-code-from api
 
 script:
   - docker-compose -f docker-compose.yml run api python -m unittest
