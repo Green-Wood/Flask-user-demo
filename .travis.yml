@@ -9,11 +9,11 @@ branches:
 services:
   - docker
 
-before_install:
+before_script:
   - docker-compose up --build -d
 
 script:
-  - docker run api python -m unittest
+  - docker-compose run api python -m unittest
 
 after_script:
   - docker-compose -f docker-compose.yml down
