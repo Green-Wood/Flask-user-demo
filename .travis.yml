@@ -3,7 +3,7 @@ branches:
   only:
   - master
 services:
-- docker
+  - docker
 before_install:
 - openssl aes-256-cbc -K $encrypted_707a8c6f41b7_key -iv $encrypted_707a8c6f41b7_iv
   -in id_rsa.enc -out ~\/.ssh/id_rsa -d
