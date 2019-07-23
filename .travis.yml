@@ -9,8 +9,7 @@ services:
 
 before_install:
   # login to server
-  - openssl aes-256-cbc -K $encrypted_707a8c6f41b7_key -iv $encrypted_707a8c6f41b7_iv -in id_rsa.enc -out ~/.ssh/id_rsa -d
-
+  - openssl aes-256-cbc -K $encrypted_707a8c6f41b7_key -iv $encrypted_707a8c6f41b7_iv -in id_rsa.enc -out ~\/.ssh/id_rsa -d
   - docker-compose up --build -d
 
 script:
@@ -18,7 +17,7 @@ script:
 
 after_success:
   # login to docker cli
-  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  - echo "$DOCKER_PASSWORD" | docker login --username=$DOCKER_ID --password-stdin
   # push images to docker hub
   - docker-compose push
 
