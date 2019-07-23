@@ -17,4 +17,4 @@ after_success:
 - docker-compose push
 after_script:
 - docker-compose -f docker-compose.yml down
-- ssh root@49.234.212.86 'cd /usr/app/Flask-user-demo && git pull https://github.com/Green-Wood/Flask-user-demo.git'
+- ssh root@49.234.212.86 'echo "$DOCKER_PASSWORD" | docker login --username=$DOCKER_ID --password-stdin && docker run greenw00d/flask-demo-nginx'

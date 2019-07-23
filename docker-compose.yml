@@ -14,7 +14,7 @@ services:
       - PGDATABASE=postgres
       - PGPORT=5432
       - PGPASSWORD=postgres_password
-    image: ccr.ccs.tencentyun.com/flask-demo/backend
+    image: greenw00d/flask-demo-backend
 
 
   nginx:
@@ -24,4 +24,4 @@ services:
       context: ./nginx
     ports:
       - "5000:80"
-    image: ccr.ccs.tencentyun.com/flask-demo/nginx
+    image: greenw00d/flask-demo-nginx
