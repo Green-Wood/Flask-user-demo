@@ -8,9 +8,10 @@ services:
   - docker
 
 before_install:
-  - docker-compose up --build -d
   # login to server
-  -  openssl aes-256-cbc -K $encrypted_707a8c6f41b7_key -iv $encrypted_707a8c6f41b7_iv -in id_rsa.enc -out ~/.ssh/id_rsa -d
+  - openssl aes-256-cbc -K $encrypted_707a8c6f41b7_key -iv $encrypted_707a8c6f41b7_iv -in id_rsa.enc -out ~/.ssh/id_rsa -d
+
+  - docker-compose up --build -d
 
 script:
   - docker-compose run api python -m unittest
