@@ -9,6 +9,8 @@ services:
 
 before_install:
   - docker-compose up --build -d
+  # login to server
+  -  openssl aes-256-cbc -K $encrypted_707a8c6f41b7_key -iv $encrypted_707a8c6f41b7_iv -in id_rsa.enc -out ~/.ssh/id_rsa -d
 
 script:
   - docker-compose run api python -m unittest
@@ -21,3 +23,6 @@ after_success:
 
 after_script:
   - docker-compose -f docker-compose.yml down
+  - ssh root@49.234.212.86
+  - cd /usr/app/Flask-user-demo
+  - git pull https://github.com/Green-Wood/Flask-user-demo.git
