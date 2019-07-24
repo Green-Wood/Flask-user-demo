@@ -13,8 +13,8 @@ before_install:
 script:
   - docker-compose run api python -m unittest
 after_success:
-- echo "$DOCKER_PASSWORD" | docker login --username=$DOCKER_ID --password-stdin
-- docker-compose push
+  - echo "$DOCKER_PASSWORD" | docker login --username=$DOCKER_ID --password-stdin
+  - docker-compose push
 after_script:
-- docker-compose -f docker-compose.yml down
-- ssh root@49.234.212.86 'echo "$DOCKER_PASSWORD" | docker login --username=$DOCKER_ID --password-stdin && docker run greenw00d/flask-demo-nginx'
+  - docker-compose -f docker-compose.yml down
+  - ssh travis@49.234.212.86 -o StrictHostKeyChecking=no 'cd /usr/app/Flask-user-demo && git pull && docker-compose -f docker-compose.prod.yml up'
