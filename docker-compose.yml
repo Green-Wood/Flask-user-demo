@@ -21,9 +21,7 @@ services:
   ml:
     build:
       dockerfile: Dockerfile
-      context: ./backend
-    ports:
-      - "8501:8501"
+      context: ./saved_model_half_plus_two_cpu
     image: greenw00d/flask-demo-model
 
   nginx:

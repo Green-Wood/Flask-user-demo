@@ -23,10 +23,10 @@ class Model(Resource):
     def post(self):
         data = _cal_parser.parse_args()
         MODEL_HOST = getenv('MODEL_HOST', 'localhost')
-        MODEL_URI = '{host}:8501/v1/models/half_plus_two:predict'.format(host=MODEL_HOST)
+        MODEL_URI = 'http://{host}:8501/v1/models/half_plus_two:predict'.format(host=MODEL_HOST)
         session = requests.Session()
         session.trust_env = False
         response = requests.post(MODEL_URI, json=data)
         if not response.ok:
             return 'something goes wrong', 400
-        return MODEL_URI, 200
+        return response.json(), 200
