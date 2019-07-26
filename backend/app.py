@@ -7,6 +7,7 @@ from os import getenv
 
 from resources.user_resource import api as ns_user
 from resources.security import api as ns_security
+from resources.model import api as ns_ml
 
 # choose a env {'dev', 'test', 'prod'}
 APP_ENV = getenv('APP_ENV', 'dev')
@@ -20,6 +21,7 @@ jwt = JWTManager(app)
 
 api.add_namespace(ns_user)
 api.add_namespace(ns_security)
+api.add_namespace(ns_ml)
 
 
 @app.before_first_request

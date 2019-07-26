@@ -14,8 +14,17 @@ services:
       - PGDATABASE=postgres
       - PGPORT=5432
       - PGPASSWORD=postgres_password
+      - MODEL_HOST=ml
+      - MODEL_PORT=8501
     image: greenw00d/flask-demo-backend
 
+  ml:
+    build:
+      dockerfile: Dockerfile
+      context: ./backend
+    ports:
+      - "8501:8501"
+    image: greenw00d/flask-demo-model
 
   nginx:
     restart: always
@@ -25,3 +34,4 @@ services:
     ports:
       - "5000:80"
     image: greenw00d/flask-demo-nginx
+
