@@ -19,3 +19,7 @@ services:
     ports:
       - "5000:80"
     image: greenw00d/flask-demo-nginx
+
+  model:
+    restart: always
+    image: greenw00d/flask-demo-model

@@ -8,7 +8,7 @@ services:
 - docker
 before_install:
 - openssl aes-256-cbc -K $encrypted_4ac334004a84_key -iv $encrypted_4ac334004a84_iv
-  -in deploy_rsa.enc ~/.ssh/id_rsa -d
+  -in deploy_rsa.enc -out ~/.ssh/id_rsa -d
 - chmod 600 ~/.ssh/id_rsa
 - ssh-add ~/.ssh/id_rsa
 - docker-compose up --build -d
