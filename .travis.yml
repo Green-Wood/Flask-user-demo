@@ -26,4 +26,4 @@ after_success:
 
 after_script:
   - docker-compose -f docker-compose.yml down
-  - sshpass -e ssh $SERVER_USER@$SERVER_IP -o stricthostkeychecking=no 'cd ~/flask-user-demo/Flask-user-demo && git pull && docker-compose down && docker-compose rm -f && docker-compose -f docker-compose.prod.yml up -d'
+  - sshpass -e ssh $SERVER_USER@$SERVER_IP -o stricthostkeychecking=no 'cd ~/flask-user-demo/Flask-user-demo && chmod +x deploy.sh'
