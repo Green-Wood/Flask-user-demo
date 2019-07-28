@@ -3,15 +3,15 @@ branches:
   only:
   - master
 addons:
+  ssh_konwn_hosts: $SERVER_IP
   apt:
     packages:
     - sshpass
-  ssh_konwn_hosts: $SERVER_IP
 services:
 - docker
 before_install:
   - sudo apt-get install -y sshpass
-  - docker-compose up --build -d
+  - docker-compose -f docker-compose.yml up --build -d
 script:
 - docker-compose run api python -m unittest
 after_success:
@@ -19,4 +19,4 @@ after_success:
 - docker-compose push
 after_script:
 - docker-compose -f docker-compose.yml down
-- sshpass -e ssh $SERVER_USER@$SERVER_IP -o stricthostkeychecking=no 'cd ~/flask-user-demo/Flask-user-demo && git pull'
+- sshpass -e ssh $SERVER_USER@$SERVER_IP -o stricthostkeychecking=no 'cd ~/flask-user-demo/Flask-user-demo && git pull && docker-compose -f docker-compose.prod.yml restart'
