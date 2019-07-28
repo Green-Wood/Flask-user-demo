@@ -2,6 +2,8 @@ sudo: required
 branches:
   only:
   - master
+addons:
+  ssh_known_hosts: 49.234.212.86
 services:
 - docker
 before_install:
