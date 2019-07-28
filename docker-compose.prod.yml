@@ -11,6 +11,8 @@ services:
       - PGDATABASE=postgres
       - PGPORT=5432
       - PGPASSWORD=postgres_password
+      - MODEL_HOST=ml
+      - MODEL_PORT=8501
     image: greenw00d/flask-demo-backend:latest
 
 
