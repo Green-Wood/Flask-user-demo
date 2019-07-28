@@ -30,6 +30,6 @@ services:
       dockerfile: Dockerfile
       context: ./nginx
     ports:
-      "8080:80"
+      - "8080:80"
     image: greenw00d/flask-demo-nginx
 
