@@ -19,7 +19,8 @@ services:
   nginx:
     restart: always
     ports:
-      - "5000:80"
+      - "80:80"
+      - "443:443"
     image: greenw00d/flask-demo-nginx:latest
 
   ml:
